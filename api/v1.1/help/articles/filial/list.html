@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Список филиалов</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<body>
+		<h1>Список филиалов</h1>
+		Точка входа:
+		<ul>
+			<li><a href="http://188.246.224.156/api/v1/filial/list.php" target="_blank">http://188.246.224.156/api/v1/filial/list.php</a></li>
+		</ul>
+		Фильтрующие параметры:
+		<ul>
+			<li>id (число, список через запятую) - по ID филиала(ов)</li>
+			<li>name (строка) - по названию (? заменяет один символ, * заменяет произвольное количество символов)</li>
+			<li>city (строка) - по городу (фильтрация как с полем name)</li>
+		</ul>
+		Для сортировки укажите параметр order=
+		<ul>
+			<li>id - по ID</li>
+			<li>name - По названию</li>
+			<li>city - По городу</li>
+			<li>comp_count - по количеству компьютеров</li>
+			<li>ip - По IP</li>
+		</ul>
+		Ограничение количества элементов в выборке:
+		<ul>
+			<li>limit={количество в виде числа}</li>
+		</ul>
+		Пропустить некоторое количество записей в начале:
+		<ul>
+			<li>offset={сколько пропустить в виде числа}</li>
+		</ul>
+		Формат вывода:
+		<ul>
+			<li>format=</li>
+			<ul>
+				<li>ini (в виде ini-файла)</li>
+				<li>json (JSON) - по умолчанию</li>
+			</ul>
+		</ul>
+		Все параметры являются необязательными.
+		<hr />
+		Пример: <a href="http://188.246.224.156/api/v1/filial/list.php?format=ini&id=1,2,4,15,16,18,22&order=comp_count" target="example" onclick="document.getElementById('example').style.display='block'; window.location.hash = '#iframe';">http://188.246.224.156/api/v1/filial/list.php?format=ini&id=1,2,4,15,16,18,22&order=comp_count</a>
+		<a name="iframe"></a>
+		<iframe name="example" id="example" style="display: none; width: 1000px; height: 500px; margin-top:10px; border: 0px;">
+		
+		</iframe>
+	</body>
+</html>

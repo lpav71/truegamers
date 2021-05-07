@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteBase /
+
+RewriteRule api/v1/login /api/v1/users/auth.php [L]
+#RewriteRule api/v1/comp/(.+) /api/v1/computers/list.php$1 [QSA]

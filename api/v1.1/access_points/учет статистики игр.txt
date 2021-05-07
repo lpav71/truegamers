@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>Учет статистики игр</title>
+</head>
+<body>
+<pre>Точка входа: https://truegamers.pro/api/v1.1/games/statistics/write
+Метод: POST
+Авторизация: Обязательна
+Параметры:
+	games=число(можно список через запятую              //ID игры / игр 
+	duration=число(можно список через запятую)          //Время, в течение которого работает игры
+	reservation_id=число                                //ID резервации
+Возможные ошибки:
+	ERROR_EMPTY_RESERVATION_ID - не указан ID резервации
+	ERROR_EMPTY_GAMES - не указан ID игр
+	ERROR_EMPTY_DURATION - не указана продолжительность
+
+В результате будет выведен JSON-массив, содержащий:
+
+{
+  "result":"RESULT_SUCCESS", - флаг успеха
+  "count":2, - количество добавленных / измененных записей
+  "payload":
+  [
+  {
+    "id":1, - ID записи
+    "reservation_id":177, - ID резервации
+    "branch_id":1, - ID филиала
+    "game_id":41, - ID игры из таблицы tg_games
+    "game_name":"DOTA 2", - название игры
+    "game_time":2, - продолжительность
+    "time_start":"2021-01-25 11:14:15", - время старта
+    "time_end":"2021-01-25 11:16:15" - время окончания
+  }
+, 
+   {
+      "id":3,
+      "reservation_id":177,
+      "branch_id":2,
+      "game_id":3,
+      "game_name":"",
+      "game_time":15,
+      "time_start":"2021-01-25 16:13:37",
+      "time_end":"2021-01-25 16:13:37"
+    }
+  ]
+}
+

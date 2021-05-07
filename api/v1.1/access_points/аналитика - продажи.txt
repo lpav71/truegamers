@@ -1,0 +1,82 @@
+<html>
+<head>
+	<title>Аналитика - продажи</title>
+</head>
+<body>
+<pre>Точка входа: https://truegamers.pro/api/v1.1/reports/sales_rate
+Пример GET-запроса: https://truegamers.pro/api/v1.1/reports/sales_rate?filter={"branch_id":[5],"date_start":"2021-01-01 00:01:00","date_end":"2021-04-01 00:01:00"}&sort={"field":"category","order":"ASC"}
+Метод: GET
+Авторизация: Обязательна
+Параметры:
+  filter=строка         //JSON-объект с параметрами фильтрации
+  Формат фильтра:
+    {
+      "branch_id":[1,2] //массив со списком ID филиалов (может быть пустым, если нужны данные со всех филиалов)
+      "date_start":"2021-01-20 00:00:00" //дата в указанном формате. Будут выведены данные после указанной даты (это поле можно не указывать)
+      "date_end":"2021-01-21 00:00:00" //дата в указанном формате. Будут выведены данные до указанной даты (это поле можно не указывать, если не указана date_start)
+    }
+  sort=строка           //JSON-массив с параметрами сортировки (пример: sort={"field":"address","order":"DESC"})
+
+Поля для сортировки:
+ID
+date
+admin_id
+admin_name
+money
+set_type
+pos
+status
+branch_id
+smena
+
+В случае успеха скрипт отдает следующие данные:
+{
+    "result": "RESULT_SUCCESS",
+    "payload": {
+        "items": [
+            {
+                "ID": "120",
+                "date": "2021-03-12 21:23:06",
+                "admin_id": "987",
+                "admin_name": "Дробыш",
+                "money": "$130.00",
+                "sale_type": "1",
+                "pos": "2",
+                "status": "0",
+                "branch_id": "5",
+                "smena": "379",
+                "list": [
+                    {
+                        "ID": "147",
+                        "check_id": "120",
+                        "product": "FLASH  0.49",
+                        "date": "2021-03-12 21:23:06",
+                        "admin_id": "987",
+                        "admin_name": "Дробыш",
+                        "price": "$80.00",
+                        "coll": "1",
+                        "price_total": "$80.00",
+                        "branch_id": "5",
+                        "product_id": "88"
+                    },
+                    {
+                        "ID": "148",
+                        "check_id": "120",
+                        "product": "KitKat 40 гр",
+                        "date": "2021-03-12 21:23:06",
+                        "admin_id": "987",
+                        "admin_name": "Дробыш",
+                        "price": "$50.00",
+                        "coll": "1",
+                        "price_total": "$50.00",
+                        "branch_id": "5",
+                        "product_id": "102"
+                    }
+                ]
+            },
+    ],
+            "currencies_total": 39930,
+            "total": 361,
+            "count": 361
+        }
+}

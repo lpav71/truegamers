@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Список админов филиала</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<body>
+		<h1>Список админов филиала</h1>
+		Точка входа:
+		<ul>
+			<li><a href="http://188.246.224.156/api/v1/filial/admins.php" target="_blank">http://188.246.224.156/api/v1/filial/admins.php</a></li>
+		</ul>
+		Фильтр полей:
+			<ul>
+				<li>Для вывода не всех полей укажите в GET-строке параметр fields=</li>
+				<ul>
+					<li>ID - ID пользователя в системе</li>
+					<li>username - имя пользователя</li>
+					<li>password - пароль</li>
+					<li>salt - соль для генерации пароля</li>
+					<li>status - статус (0 - суперхост, 1 - хост, 2 - разработчик, 3 - админ клуба, 4 - зарезервировано, 5 - обычный пользователь)</li>
+					<li>email - email пользователя</li>
+					<li>phone - номер телефона</li>
+					<li>name - имя</li>
+					<li>surname - фамилия</li>
+					<li>birthdate - дата рождения</li>
+					<li>reg_date - дата регистрации</li>
+					<li>last_visit - последний визит</li>
+					<li>phone_code - код отправленный на телефон для проверки (если ячейка пуста - телефон подтвержден)</li>
+					<li>email_token - токен для проверки email (если пустота - email подтвержден)</li>
+					<li>banned - Если 1 - пользователь забанен )))</li>
+					<li>ban_reason - причина похода в баню</li>
+					<li>ban_reason_admin - причина бана для администратора (пользователь ее не видит)</li>
+					<li>ban_start - когда забанен</li>
+					<li>ban_end - конец бана</li>
+					<li>game_time - сколько пользователь наиграл в минутах</li>
+					<li>rang - ранг пользователя (список рангов хранится в таблице tg_rang, доступ через /api/v1/rang/*.*)</li>
+					<li>discount - скидка, которой пользуется пользователь в процентах</li>
+					<li>filial_id - ID филиала, в котором зарегистрирован пользователь</li>
+					<li>temp - если 1, то пользователь временный</li>
+					<li>ref_user - ID пользователя, под которым пользователь зарегистрировался</li>
+					<li>ref_percent - процент, который получает пользователь как реферал</li>
+					<li>abonement - дата и время завершения абонемента</li>
+					<li>send_sms - если 0, то пользователь разрешил рассылку смс</li>
+					<li>send_push - если 0, то пользователь разрешил рассылку пушей</li>
+				</ul>
+				<p>Поля перечисляются через запятую без пробелов, например: admin.php?fields=username,email,phone</p>
+			</ul>
+		Фильтрующие параметры:
+		<ul>
+			<li>id (число, список через запятую) - по ID пользователя</li>
+			<li>filial_id (число, список через запятую) - по ID филиала(ов)</li>
+			<li>filial_ip (строка) - по IP-адресу клуба (если указать filial_ip=auto, то будет использован IP, с которого происходит обращение к скрипту)</li>
+			<li>city (строка) - по городу клуба (? заменяет один символ, * заменяет произвольное количество символов)</li>
+		</ul>
+		Для сортировки укажите параметр order=
+		<ul>
+			<li>Любое из полей, перечисленных в фильтре полей</li>
+		</ul>
+		Ограничение количества элементов в выборке:
+		<ul>
+			<li>limit={количество в виде числа}</li>
+		</ul>
+		Пропустить некоторое количество записей в начале:
+		<ul>
+			<li>offset={сколько пропустить в виде числа}</li>
+		</ul>
+		Формат вывода:
+		<ul>
+			<li>format=</li>
+			<ul>
+				<li>ini (в виде ini-файла)</li>
+				<li>json (JSON) - по умолчанию</li>
+			</ul>
+		</ul>
+		Все параметры являются необязательными. Будут выведены только пользователи со статусом 1 и 3 (хост и админ клуба) 
+		<hr />
+		Пример: <a href="http://188.246.224.156/api/v1/filial/admins.php?format=ini&fields=email,username&ip=95.181.143.212" target="example" onclick="document.getElementById('example').style.display='block'; window.location.hash = '#iframe';">http://188.246.224.156/api/v1/filial/admins.php?format=ini&fields=email,username&ip=95.181.143.212</a>
+		<a name="iframe"></a>
+		<iframe name="example" id="example" style="display: none; width: 1000px; height: 500px; margin-top:10px; border: 0px;">
+		
+		</iframe>
+	</body>
+</html>

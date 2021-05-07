@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>Аналитика - частотность тарифов</title>
+</head>
+<body>
+<pre>Точка входа: https://truegamers.pro/api/v1.1/reports/tariffs
+Пример GET-запроса: https://truegamers.pro/api/v1.1/reports/tariffs?filter={"branch_id":[5],"date_start":"2021-01-01 00:01:00","date_end":"2021-04-01 00:01:00"}&sort={"field":"choices_count","order":"DESC"}
+Метод: GET
+Авторизация: Обязательна
+Параметры:
+  filter=строка         //JSON-объект с параметрами фильтрации
+  Формат фильтра:
+    {
+      "branch_id":[1,2] //массив со списком ID филиалов (может быть пустым, если нужны данные со всех филиалов)
+      "date_start":"2021-01-20 00:00:00" //дата в указанном формате. Будут выведены данные после указанной даты (это поле можно не указывать)
+      "date_end":"2021-01-21 00:00:00" //дата в указанном формате. Будут выведены данные до указанной даты (это поле можно не указывать, если не указана date_start)
+    }
+  sort=строка           //JSON-массив с параметрами сортировки (пример: sort={"field":"address","order":"DESC"})
+
+Поля для сортировки:
+game_time - Отыгранное время
+choices_count - количество резерваций
+choices_percentage - процент резерваций
+
+Возможные ошибки:
+  ERROR_EMPTY_FILTER - не указан фильтр
+  ERROR_INVALID_BRANCH_ID - branch_id в фильтре не является массивом
+
+В случае успеха скрипт отдает следующие данные:
+
+"result": "RESULT_SUCCESS",
+    "payload": {
+        "items": [
+            {
+                "ID": "1586",
+                "name": "Трипл Килл",
+                "game_time": "6120",
+                "choices_count": "34",
+                "choices_percentage": "21"
+            },
+            {
+                            "ID": "1553",
+                            "name": "Кибер сутки",
+                            "game_time": "",
+                            "choices_count": "0",
+                            "choices_percentage": "0"
+                        }
+                    ],
+                    "currencies_total": "",
+                    "total": "159",
+                    "count": "159"
+                }
+            }

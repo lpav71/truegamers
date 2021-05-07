@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Список тарифов для клиентской шеллки</title>
+</head>
+<body>
+<pre>Точка входа: http://188.246.224.156/api/v1.1/prices/list-for-category/
+Пример GET-запроса: http://188.246.224.156/api/v1.1/prices/list-for-category/?branch_id=1&category=1
+Метод: GET / POST
+Авторизация: Обязательна
+Параметры:
+	branch_id=число         //ID филиала
+	category=число          //Категория компьютера
+Возможные ошибки:
+	ERROR_EMPTY_BRANCH_ID - не указан филиал
+	ERROR_EMPTY_CATEGORY - не указана категория компьютера
+
+В результате будет выведен JSON-массив, содержащий:
+
+{
+  "result":"RESULT_SUCCESS", - флаг успеха
+  "count":2, - количество элементов, извлеченных из БД
+  "payload": - массив со списком извлеченных элементов
+  [
+        {
+      "id":1,
+      "name":"Тестовый",
+      "zone":1,
+      "time_start":"00:00:00",
+      "time_end":"13:59:59",
+      "price":1,
+      "duration":0,
+      "weekday":4,
+      "branch_id":1,
+      "packet_id":0,
+      "tarif_category":0,
+      "time_fix_end":null
+    }
+,
+    
+    {
+      "id":2,
+      "name":"Tect2",
+      "zone":1,
+      "time_start":"14:00:00",
+      "time_end":"23:59:00",
+      "price":2,
+      "duration":0,
+      "weekday":4,
+      "branch_id":1,
+      "packet_id":0,
+      "tarif_category":0,
+      "time_fix_end":null
+    }
+  ]
+}

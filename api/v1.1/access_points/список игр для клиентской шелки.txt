@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>Список игр</title>
+</head>
+<body>
+<pre>Точка входа: http://188.246.224.156/api/v1.1/games/list/
+Пример GET-запроса: http://188.246.224.156/api/v1.1/games/list/?branch_id=1&comp_id=1
+Метод: GET / POST
+Авторизация: Обязательна
+Параметры:
+	branch_id=число         //ID филиала
+	comp_id=число           //ID компьютера
+Возможные ошибки:
+	ERROR_EMPTY_BRANCH_ID - не указан филиал
+	ERROR_EMPTY_COMP_ID - не указан ID компьютера
+
+В результате будет выведен JSON-массив, содержащий:
+
+{
+  "result":"RESULT_SUCCESS", - флаг успеха
+  "count":2, - количество элементов, извлеченных из БД
+  "payload": - массив со списком извлеченных элементов
+  [
+         {
+      "id":2,
+      "game":"123",
+      "icon_link":"123",
+      "exe_link":"324",
+      "type_soft":0,
+      "param":"",
+      "num":0,
+      "comp_id":1,
+      "comp_categor":0,
+      "branch_id":1,
+      "status_id":0,
+      "steam_id":0,
+      "handle":"",
+      "caption_game":""
+    }
+,
+    
+    {
+      "id":3,
+      "game":"rtytr",
+      "icon_link":"435",
+      "exe_link":"32423",
+      "type_soft":0,
+      "param":"",
+      "num":0,
+      "comp_id":1,
+      "comp_categor":0,
+      "branch_id":1,
+      "status_id":0,
+      "steam_id":0,
+      "handle":"",
+      "caption_game":""
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+SELECT (*) FROM tg_users WHERE \"ID\" IN(SELECT \"branch_id\" FROM tg_users_to_branches WHERE user_id = $user_id)

@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Редактирование username пользователя</title>
+</head>
+<body>
+<pre>Точка входа: https://truegamers.pro/api/v1.1/users/:id/edit
+Пример GET-запроса: https://truegamers.pro/api/v1.1/users/30/edit?login=qWE
+Метод: GET
+Авторизация: Обязательна
+Параметры:
+  :id - id пользователя
+  login - новый логин пользователя
+
+  Возможные ошибки:
+  ERROR_INVALID_USER_ID
+  ERROR_USER_DOES_NOT_EXISTS
+  ERROR_LOGIN_ALREADY_EXISTS
+
+В случае успеха скрипт отдает следующие данные:
+{
+    "result": "RESULT_SUCCESS",
+    "payload": {
+        "items": {
+            "ID": "30",
+            "username": "qWE",
+            "password": "a5d57affbcf1800ad134a07154b45bb5",
+            "salt": "uziyg2397",
+            "status": "5",
+            "email": "73601530",
+            "phone": "797250336428",
+            "name": "73601530",
+            "surname": null,
+            "birthdate": null,
+            "reg_date": "2020-12-15 17:11:15",
+            "last_visit": null,
+            "phone_code": null,
+            "email_token": null,
+            "banned": "0",
+            "ban_reason": "Тест",
+            "ban_reason_admin": null,
+            "ban_start": "2020-12-22 11:04:42",
+            "ban_end": "2020-12-22 11:49:31",
+            "game_time": "0",
+            "rang": "0",
+            "discount": "0",
+            "temp": "0",
+            "ref_user": null,
+            "ref_percent": "0",
+            "abonement": null,
+            "send_sms": "0",
+            "send_push": "0",
+            "user_id": "0",
+            "avatart": null,
+            "deleted": "0",
+            "balance": null,
+            "bonus": null,
+            "is_superhost": "0",
+            "time_zone": "+00:00",
+            "comment": null
+        },
+        "currencies_total": "",
+        "total": "",
+        "count": ""
+    }
+}

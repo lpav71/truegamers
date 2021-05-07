@@ -1,0 +1,15 @@
+RewriteEngine on
+
+RewriteBase /api/v1.1
+
+#RewriteRule ^debug.html$ debug.html [L, QSA]
+#RewriteRule ^dump.php$ dump.php [L, QSA]
+#RewriteRule ^request_list.php$ request_list.php [L, QSA]
+
+#RewriteRule api/v1/login /api/v1/users/auth.php [L]
+#RewriteRule api/v1/comp/(.+) /api/v1/computers/list.php$1 [QSA]
+
+#RewriteCond %{REQUEST_FILENAME} !-f     #Если файл не существует
+#RewriteCond %{REQUEST_FILENAME} !-d    #И если папка не существует
+RewriteRule files/ index.php [L]
+RewriteRule ^.*$ index.php [L,QSA]

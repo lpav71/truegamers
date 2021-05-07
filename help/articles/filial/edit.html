@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Изменение филиала</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.1.js"></script>
+		<script src="http://fiddle.jshell.net/js/stringify.js?7b8b3e118b302e30f3aea5268abb2e317f01168b" charset="utf-8"></script>
+	</head>
+	<body>
+		<h1>Изменение филиала</h1>
+		Точка входа:
+		<ul>
+			<li><a href="http://188.246.224.156/api/v1/filial/edit.php" target="_blank">http://188.246.224.156/api/v1/filial/edit.php</a></li>
+		</ul>
+		Обязательные параметры:
+		<ul>
+			<li>name (строка) - название филиала</li>
+			<li>city (строка) - город</li>
+			<li>comp_count (число) - количество компьютеров</li>
+			<li>owner_id - ID хоста в таблице tg_users (этот пользователь не должен быть привязан к какому-либо филиалу, либо должен быть из текущего)</li>
+		</ul>
+		Необязательные параметры:
+		<ul>
+			<li>
+				ip - IP-адрес сети клуба (внешний IP, предоставленный провайдером). Если не указан, будет использован IP компьютера, с которого происходит изменение.
+				<blockquote>
+					Утилита ipconfig в абсолютном большинстве случаев (когда интернет на устройстве идет через роутер или другую локальную сеть) не может показать внешний IP компьютера. 
+					Узнать IP можно, вызвав скрипт <a href="http://188.246.224.156/api/v1/services/ip.php" target="frame1"onclick="document.getElementById('frame1').style.display='block'; window.location.hash = '#iframe1';">http://188.246.224.156/api/v1/services/ip.php</a>
+					<a name="iframe1"></a>
+					<iframe name="frame1" id="frame1" style="display: none; width: 300px; height: 50px; margin-top:10px; border: 0px;">
+					
+					</iframe>
+				</blockquote>
+			</li>
+		</ul>
+		Формат вывода результата:
+		<ul>
+			<li>format=</li>
+			<ul>
+				<li>ini (в виде ini-файла)</li>
+				<li>json (JSON) - по умолчанию</li>
+			</ul>
+		</ul>
+		В качестве результата в поле result выводится строка "RESULT_SUCCESS" + запись о филиале из таблицы tg_filial
+		<hr />
+		Сообщения об ошибках:
+		<ul>
+			<li>ERROR_EMPTY_NAME - не указано название филиала</li>
+			<li>ERROR_EMPTY_CITY - не указан город</li>
+			<li>ERROR_EMPTY_COMP_COUNT - не указано количество компьютеров</li>
+			<li>ERROR_INVALID_IP - некорректный формат IP-адреса</li>
+			<li>ERROR_EMPTY_OWNER_ID - не указан ID хоста</li>
+			<li>ERROR_USER_FROM_ANOTHER_FILIAL - в качестве хоста указан ID пользователя из другого филиала</li>
+		</ul>
+		<hr />
+	</body>
+</html>

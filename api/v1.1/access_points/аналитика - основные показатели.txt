@@ -1,0 +1,130 @@
+<html>
+<head>
+	<title>Аналитика - основные показатели</title>
+</head>
+<body>
+<pre>Точка входа: https://truegamers.pro/api/v1.1/reports/general
+Пример GET-запроса: https://truegamers.pro/api/v1.1/reports/general?filter={"branch_id":[],"date_start":"2021-01-01 00:01:00"}&sort={"field": "city", "order": "DESC"}
+Метод: GET / POST
+Авторизация: Обязательна
+Параметры:
+  filter=строка         //JSON-объект с параметрами фильтрации
+  Формат фильтра:
+    {
+      "branch_id":[1,2] //массив со списком ID филиалов (может быть пустым, если нужны данные со всех филиалов)
+      "date_start":"2021-01-20 00:00:00" //дата в указанном формате. Будут выведены данные после указанной даты (это поле можно не указывать)
+      "date_end":"2021-01-21 00:00:00" //дата в указанном формате. Будут выведены данные до указанной даты (это поле можно не указывать, если не указана date_start)
+    }
+  sort=строка           //JSON-массив с параметрами сортировки (пример: sort={"field":"address","order":"DESC"})
+Поля для сортировки:
+  ID - по ID филиала
+  city - по городу филиала
+  address - по адресу филиала
+  currency - по валюте филиала
+  currency_code - по коду валюты филиала
+  total - по общей выручке филиала
+  bar_total - по выручке филиала по бару
+  receipt_count - по количеству чеков филиала
+  average_receipt - по среднему чеку филиала
+  average_occupancy - по средней загрузке филиала
+  clients_total - по полному количеству клиентов филиала
+  new_clients - по количеству новых клиентов филиала
+
+Возможные ошибки:
+  ERROR_EMPTY_FILTER - не указан фильтр
+  ERROR_INVALID_BRANCH_ID - branch_id в фильтре не является массивом
+  ERROR_DATE_START_REQUIRED - необходимо указать date_start в фильтре
+
+В случае успеха скрипт отдает следующие данные:
+
+{
+    "result": "RESULT_SUCCESS", - флаг успеха
+    "payload": {
+        "items": [ - список филиалов
+            {
+                "id": 2, - ID филиала
+                "name": "Киев", - название филиала
+                "city": "Киев", - город филиала
+                "address": "", - адрес филиала
+                "ip": "37.146.61.164", - внешний IP филиала
+                "currency": "ГРН", - валюта филиала
+                "currency_code": "UAH", - код валюты филиала
+                "total": 42888, - общая выручка филиала
+                "bar_total": 0, - общая выручка по бару
+                "average_receipt": 289, - средний чек
+                "average_occupancy": 0, - средняя загрузка по филиалу
+                "clients_total": 1, - клиентов всего в филиале
+                "new_clients": 1 - новых клиентов в филиале
+            },
+            {
+                "id": 3,
+                "name": "Краснодар",
+                "city": "Королёв",
+                "address": "",
+                "ip": "85.175.73.203",
+                "currency": "РУБ",
+                "currency_code": "RUB",
+                "total": 50420,
+                "bar_total": 0,
+                "average_receipt": 293,
+                "average_occupancy": 0,
+                "clients_total": 8,
+                "new_clients": 7
+            },
+            {
+                "id": 1,
+                "name": "Королёв",
+                "city": "Краснодар",
+                "address": "",
+                "ip": "95.181.143.212",
+                "currency": "РУБ",
+                "currency_code": "RUB",
+                "total": 95909,
+                "bar_total": 0,
+                "average_receipt": 305,
+                "average_occupancy": 0,
+                "clients_total": 34,
+                "new_clients": 27
+            },
+            {
+                "id": 4,
+                "name": "Красноярск",
+                "city": "Красноярск",
+                "address": "",
+                "ip": "85.175.73.203",
+                "currency": "РУБ",
+                "currency_code": "RUB",
+                "total": 0,
+                "bar_total": 0,
+                "average_receipt": 0,
+                "average_occupancy": 0,
+                "clients_total": 5,
+                "new_clients": 5
+            }
+        ],
+        "currencies_total": { - общие данные (итого), сгруппированные по валютам
+            "RUB": {
+                "currency_code": "RUB", - код валюты
+                "currency": "РУБ", - название валюты
+                "total": 146329, - общая выручка
+                "bar_total": 0, - общая выручка по бару
+                "receipt_count": 486, - количество чеков
+                "average_receipt": 301.09 - средний чек
+            },
+            "UAH": {
+                "currency_code": "UAH",
+                "currency": "ГРН",
+                "total": 42888,
+                "bar_total": 0,
+                "receipt_count": 148,
+                "average_receipt": 289.78
+            }
+        },
+        "total": { - общие данные (итого), не относящиеся к финансам
+            "average_occupancy": 0, - средняя загрузка клубов
+            "clients_count": 48, - клиентов всего
+            "new_clients_count": 40 - новых клиентов
+        },
+        "count": 4 - всего филиалов извлечено
+    }
+}

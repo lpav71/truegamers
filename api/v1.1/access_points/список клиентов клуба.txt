@@ -1,0 +1,132 @@
+<html>
+<head>
+	<title>Список клиентов клуба</title>
+</head>
+<body>
+<pre>Точка входа: https://truegamers.pro/api/v1.1/clients
+Пример GET-запроса: https://truegamers.pro/api/v1.1/clients/?sort={"field": "name", "order": "ASC"}&search="search"&branches={"ids":[1]}
+Метод: GET / POST
+Авторизация: Обязательна
+Параметры:
+	sort=строка         //JSON-массив с параметрами сортировки (пример: {"field": "name", "order": "ASC"})
+	search=строка       //Строка для поиска в данных пользователя (в полях username, email, phone, name, surname) (? заменяет один символ, * заменяет произвольное количество символов)
+	branches=строка     //JSON-массив со списком филиалов (пример: {"ids":[1,2,3]} (при отсутствии этого параметра или при пустом массиве будут использованы все филиалы)
+Поля для сортировки:
+	ID - по ID пользователя (большими буквами)
+	username - по логину
+	email - по email'y
+	phone - по номеру телефона
+	name - по имени
+	surname - по фамилии
+	birthdate - по дате рождения
+	reg_date - по дате регистрации
+	last_visit - по дате последнего визита
+	banned - по статусу заблокирован / активен
+	game_time - по наигранному времени
+	rang - по номеру ранга
+	discount - по скидке
+	ref_user - по рефералу
+	ref_percent - по реферальному проценту
+	balance - по балансу
+	bonus - по бонусному балансу
+	time_zone - по таймзоне
+	
+Возможные ошибки:
+	<a href="https://truegamers.pro/api/v1.1/access_points/стандартные%20ошибки%20api.txt" target="_blank">Только стандартные</a>
+
+В результате будет выведен JSON-массив, содержащий:
+
+{
+  "result":"RESULT_SUCCESS", - флаг успеха
+  "payload":
+  {
+    "items": - список извлеченных записей
+    [
+            {
+        "username":"denis", - логин
+        "status":5, - статус (5 - обычный пользователь)
+        "email":"denis2", - email
+        "phone":"96189811", - номер телефона
+        "name":"denis", - имя
+        "surname":"", - фамилия
+        "birthdate":"", - дата рождения
+        "reg_date":"2020-09-12T14:23:43+00:00", - дата регистрации
+        "last_visit":"", - последний визит
+        "banned":false, - В бане или нет )))
+        "game_time":0, - сколько наиграл времени в минутах
+        "rang":
+        {
+          "id":1, - номер ранга
+          "name":"22222" - название ранга
+        }
+,
+        "discount":0, - клубная скидка в процентах
+        "ref_user":"", - ID реферала
+        "ref_percent":0, - реферальный процент
+        "abonement":"", - дата окончания абонемента
+        "send_sms":false, - разрешил ли отправлять смс-уведомления
+        "send_push":false, - разрешил ли рассылку push-уведомлений
+        "avatart":"", - аватарка (url)
+        "balance":1234, - баланс
+        "bonus_balance":12.4, - бонусный баланс
+        "is_superhost":false, - является ли суперхостом
+        "time_zone":"+00:00", - таймзона
+        "id":9, - ID пользователя
+        "branch":
+        {
+          "id":1, - ID филиала
+          "name":"Королёв", - название филиала
+          "currency":"РУБ", - валюта филиала
+          "currency_code":"RUB" - код валюты филиала
+        }
+      }
+,
+      
+      {
+        "username":"den1234",
+        "status":5,
+        "email":"den1234@mail.ru",
+        "phone":"9087979496",
+        "name":"денис",
+        "surname":"зайц",
+        "birthdate":"1980-10-10",
+        "reg_date":"2021-01-10T11:43:41+00:00",
+        "last_visit":"2021-01-10T11:43:41+00:00",
+        "banned":0,
+        "game_time":0,
+        "rang":
+        {
+          "id":1,
+          "name":"22222"
+        }
+,
+        "discount":0,
+        "ref_user":0,
+        "ref_percent":0,
+        "abonement":"",
+        "send_sms":0,
+        "send_push":0,
+        "avatart":"",
+        "balance":94,
+        "bonus_balance":100,
+        "is_superhost":0,
+        "time_zone":"+00:00",
+        "id":46,
+        "branch":
+        {
+          "id":1,
+          "name":"Королёв",
+          "currency":"РУБ",
+          "currency_code":"RUB"
+        }
+      }
+    ]
+,
+    "totalCount":2 - количество извлеченных записей
+  }
+}
+
+
+</pre>
+</body>
+</html>

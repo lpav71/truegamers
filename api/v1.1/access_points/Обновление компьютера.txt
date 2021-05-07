@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Аналитика - загруженность залов</title>
+</head>
+<body>
+<pre>Точка входа http://true-games.ru/api/v1.1/computer/update
+Пример GET-запроса: http://true-games.ru/api/v1.1/computer/update?fields=[[1,1,[1,2,6.55,74.28,10,7]],[1,2,[1,2,25.12,74.28,10,7]]]
+Метод: GET
+Авторизация: не требуется
+
+Параметры:
+id компьютера в выбранном филиале (comp_id)
+id филиала (branch_id)
+Массив данных для записи в базу
+user_id, status, money, bonus, packet_id, minutes
+
+Возможные ошибки:
+ERROR_EMPTY_FIELDS - Незополнено одно или первых поля
+ERROR_FIELDS_IS_NOT_ARRAY - Не верно заполнен массив
+
+В случае успеха скрипт отдает следующие данные:
+{
+    "result": "RESULT_SUCCESS"
+}

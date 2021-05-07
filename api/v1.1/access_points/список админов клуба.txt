@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title>Список админов клуба</title>
+</head>
+<body>
+<pre>Точка входа: http://188.246.224.156/api/v1.1/branch/admins/
+Пример GET-запроса: http://188.246.224.156/api/v1.1/branch/admins/?branch_ip=auto
+Метод: GET / POST
+Авторизация: Нет
+Параметры:
+	branch_ip=строка         //IP-адрес филиала (IP или auto)
+Возможные ошибки:
+	NO_BRANCHES_FOUND - филиал с указанным IP не найден
+
+В результате будет выведен JSON-массив, содержащий:
+
+{
+  "count":2, - количество извлеченных записей
+  "0":
+  {
+    "ID":"26",
+    "username":"78703747",
+    "password":"85bc8e24b3d02dceef17c4e60b6bc664",
+    "salt":"oqhfv2676",
+    "status":"3",
+    "email":"78703747",
+    "phone":"78703747     ",
+    "name":"78703747",
+    "surname":null,
+    "birthdate":null,
+    "reg_date":"2020-11-12 13:53:48",
+    "last_visit":null,
+    "phone_code":null,
+    "email_token":null,
+    "banned":"0",
+    "ban_reason":null,
+    "ban_reason_admin":null,
+    "ban_start":null,
+    "ban_end":null,
+    "game_time":"0",
+    "rang":"1",
+    "discount":"0",
+    "filial_id":"1",
+    "temp":"0",
+    "ref_user":null,
+    "ref_percent":"0",
+    "abonement":null,
+    "send_sms":"0",
+    "send_push":"0",
+    "user_id":"0",
+    "avatart":null,
+    "deleted":"0",
+    "balance":null,
+    "bonus":null,
+    "is_superhost":"0",
+    "time_zone":"+00:00"
+  }
+,
+  "1":
+  {
+    "ID":"25",
+    "username":"29291785",
+    "password":"114caaac03427450da1c3c53e7eb2b33",
+    "salt":"ebicr2710",
+    "status":"3",
+    "email":"29291785",
+    "phone":"29291785     ",
+    "name":"29291785",
+    "surname":null,
+    "birthdate":null,
+    "reg_date":"2020-11-12 13:53:46",
+    "last_visit":null,
+    "phone_code":null,
+    "email_token":null,
+    "banned":"0",
+    "ban_reason":null,
+    "ban_reason_admin":null,
+    "ban_start":null,
+    "ban_end":null,
+    "game_time":"0",
+    "rang":"1",
+    "discount":"0",
+    "filial_id":"1",
+    "temp":"0",
+    "ref_user":null,
+    "ref_percent":"0",
+    "abonement":null,
+    "send_sms":"0",
+    "send_push":"0",
+    "user_id":"0",
+    "avatart":null,
+    "deleted":"0",
+    "balance":null,
+    "bonus":null,
+    "is_superhost":"0",
+    "time_zone":"+00:00"
+  }
+}
+

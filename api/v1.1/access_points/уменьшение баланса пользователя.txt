@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Уменьшение баланса пользователя</title>
+</head>
+<body>
+<pre>Точка входа: http://188.246.224.156/api/v1.1/users/decrement-balance/
+Пример GET-запроса: http://188.246.224.156/api/v1.1/users/decrement-balance/?sum=3.15&action=decrement_balance
+Метод: GET / POST
+Параметры:
+	sum=число с плавающей точкой         //Сумма, на которую надо уменьшить (с плавающей точкой или с плавающей запятой или целое - будет преобразовано)
+	action=строка                        //Что уменьшить (decrement_balance - уменьшить баланс, decrement_bonus - уменьшить бонусы)
+Возможные ошибки:
+	ERROR_EMPTY_SUM - не указана сумма
+	ERROR_INVALID_SUM - некорректная сумма
+	ERROR_EMPTY_ACTION - не указано, что уменьшать
+	ERROR_INVALID_ACTION - некорректное действие
+	ERROR_BALANCE_NOT_ENOUGH - недостаточно средств на балансе у пользователя
+	ERROR_BONUSES_NOT_ENOUGH - не хватает бонусов
+
+В результате будет выведен JSON-массив, содержащий:
+
+{
+  "result":"RESULT_SUCCESS", - флаг успеха
+  "payload": - информация о балансе пользователя
+    {
+    "id":"5", - ID пользователя
+    "balance":3350.65, - баланс пользователя
+    "bonus_balance":18.82 - бонусы пользователя
+    }
+}
